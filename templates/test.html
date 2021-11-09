@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/html5shiv.min.js"></script>
+<script src="/static/kindeditor/kindeditor-all-min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <textarea id='content'>富文本</textarea>
+        <button οnclick="checkit()">提交评论</button>
+</body>
+<script>
+    initKindEditor();
+
+    function initKindEditor() {
+        var kind = KindEditor.create('#content', {
+            width: '100%',       // 文本框宽度(可以百分比或像素)
+            height: '100px',     // 文本框高度(只能像素)
+            minWidth: 200,       // 最小宽度（数字）
+            minHeight: 400 ,     // 最小高度（数字）
+            uploadJson:'/md_admin/imageupload',      // 图片上传路由方法
+            items:['emoticons',]            // 显示的功能单个功能后必须要加，
+
+        });
+    }
+
+
+    function checkit(){
+        alert($(document.getElementsByTagName("iframe")[0].contentWindow.document.body).html())
+    }
+</script>
+</html>
